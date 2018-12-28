@@ -22,6 +22,7 @@ mod day7;
 mod day8;
 mod day9;
 mod day10;
+mod day11;
 
 enum InputMode {
     Lines(Option<fn(&Vec<String>) -> String>, Option<fn(&Vec<String>) -> String>),
@@ -40,10 +41,11 @@ static DAYS: &'static [InputMode]  = &[
     OneLine(Some(day8::star1), Some(day8::star2)),
     Lines(Some(day9::star1), Some(day9::star2)),
     Lines(Some(day10::star1), Some(day10::star2)),
+    OneLine(Some(day11::star1), Some(day11::star2)),
 ];
 
 fn main() {
-    run_day(10, None);
+    run_day(11, None);
 }
 
 fn run_day(day: usize, star_constraint: Option<i32>) {
