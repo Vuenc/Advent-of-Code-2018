@@ -45,7 +45,16 @@ static DAYS: &'static [InputMode]  = &[
 ];
 
 fn main() {
-    run_day(11, None);
+    run_all();
+}
+
+fn run_all() {
+    let (time, _) = measure_time(||
+        for i in 0..DAYS.len() {
+            run_day(i + 1, None);
+        }
+    );
+    println!("Total time: {}", time)
 }
 
 fn run_day(day: usize, star_constraint: Option<i32>) {
