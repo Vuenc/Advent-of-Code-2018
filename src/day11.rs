@@ -43,8 +43,8 @@ fn get_max_window(serial_number: i32, window_sizes: RangeInclusive<usize>) -> (u
 /// Calculate window sums by summing the values in each window (used for the base case)
 fn calculate_window_sums(n: usize, fuel_cells: &Array2<i32>) -> Array2<i32> {
     let mut n_square_sums = Array2::from_elem((WIDTH - n + 1, HEIGHT - n + 1), 0_i32);       
-    for base_x in 0..WIDTH - n + 1 {
-        for base_y in 0..HEIGHT - n + 1 {
+    for base_x in 0..=WIDTH - n {
+        for base_y in 0..=HEIGHT - n {
             for x in 0..n {
                 for y in 0..n {
                     n_square_sums[(base_x, base_y)] += fuel_cells[(base_x + x, base_y + y)];
@@ -61,8 +61,8 @@ fn calculate_window_sums_from_last(n: usize, fuel_cells: &Array2<i32>, one_befor
     two_before: &Array2<i32>) -> Array2<i32> 
 {
     let mut n_square_sums = Array2::from_elem((WIDTH - n + 1, HEIGHT - n + 1), 0_i32);
-    for base_x in 0..WIDTH - n + 1 {
-        for base_y in 0..HEIGHT - n + 1 {
+    for base_x in 0..=WIDTH - n {
+        for base_y in 0..=HEIGHT - n {
             n_square_sums[(base_x, base_y)] = 
                 one_before[(base_x, base_y)]
                 + one_before[(base_x + 1, base_y + 1)] 
